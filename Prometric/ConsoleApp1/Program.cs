@@ -97,8 +97,11 @@ namespace ConsoleApp1
                 // to serialize/store shapes in various formats on disk.
                 Console.WriteLine("");
                 Console.WriteLine("--------------------- Serialize Shapes in JSON format and save into disk --------------------------------");
-                SerializeShapes(shapes);
-                Console.WriteLine("----------------- File has been created Successfully. ------------------------------------");
+                var allSavedSuccessfully = SerializeShapes(shapes);
+                if (allSavedSuccessfully)
+                    Console.WriteLine("----------------- File has been created Successfully. ------------------------------------");
+                else
+                    Console.WriteLine("----------------- Unexpected ERROR while saving to disk. ------------------------------------");
                 Console.WriteLine("");
 
                 // to  track(in memory) the number of Shape objects created (per class)
@@ -140,12 +143,20 @@ namespace ConsoleApp1
         /// To write seriaized object into a file
         /// </summary>
         /// <param name="shapes">List of shapes</param>
-        public static void SerializeShapes(List<Shape> shapes)
+        public static bool SerializeShapes(List<Shape> shapes)
         {
+            bool allSaved = true;
             foreach (var shape in shapes)
             {
-                var isSaved = WriteToJsonFile<Shape>(shape); 
+                var isSaved = WriteToJsonFile<Shape>(shape);
+                if (!isSaved)
+                {
+                    allSaved = false;
+                    break;
+                }
             }
+
+            return allSaved;
         }
 
         /// <summary>
@@ -166,6 +177,7 @@ namespace ConsoleApp1
 
                 var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite, Formatting.Indented);
                 writer = new StreamWriter(filePath, append);
+                writer.WriteLine();
                 writer.Write(contentsToWriteToFile);
 
                 isSuccess = true;
