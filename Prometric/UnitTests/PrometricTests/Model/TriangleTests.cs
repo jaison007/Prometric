@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models.Base;
 using Models.Model;
+using ShapeService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,31 +16,31 @@ namespace Models.Model.Tests
         private Shape shapeObj = null;
 
 
-        [TestMethod("Square Triangle Test")]
+        [TestMethod("Triangle Triangle Test")]
         public void TriangleTest()
         {
             //arrange
-            double width, length;
-            width = length = 5;
-            double expectedArea = width * length;
+            double @base, height, side;
+            @base = height = side = 10;
+            double expectedArea = (height * @base) / 2;  
 
             //act
-            var shapeObj = new Quadrilaterals(width, length);
+            var shapeObj = new Triangle(@base, height, side);
 
             //Assert
             Xunit.Assert.Equal(expectedArea, shapeObj.Area());
         }
 
-        [TestMethod("Square Perimeter Test")]
+        [TestMethod("Triangle Perimeter Test")]
         public void PerimeterTest()
         {
             //arrange
-            double width, length;
-            width = length = 5;
-            double expectedPerimeter = (width + length) * 2;
+            double @base, height, side;
+            @base = height = side = 10;
+            double expectedPerimeter = height + @base + side;
 
             //act
-            var shapeObj = new Quadrilaterals(width, length);
+            var shapeObj = new Triangle(@base, height, side);
 
             //Assert
             Xunit.Assert.Equal(expectedPerimeter, shapeObj.Perimeter());

@@ -32,3 +32,8 @@ D:\Development\TEST\Prometric\Prometric\ConsoleApp1\obj\Debug\net5.0\ConsoleApp1
 D:\Development\TEST\Prometric\Prometric\ConsoleApp1\obj\Debug\net5.0\ref\ConsoleApp1.dll
 D:\Development\TEST\Prometric\Prometric\ConsoleApp1\obj\Debug\net5.0\ConsoleApp1.pdb
 D:\Development\TEST\Prometric\Prometric\ConsoleApp1\obj\Debug\net5.0\ConsoleApp1.genruntimeconfig.cache
+D:\Development\TEST\Prometric\Prometric\ConsoleApp1\bin\Debug\net5.0\Autofac.dll
+D:\Development\TEST\Prometric\Prometric\ConsoleApp1\bin\Debug\net5.0\ShapeService.dll
+D:\Development\TEST\Prometric\Prometric\ConsoleApp1\bin\Debug\net5.0\ShapeService.pdb
+D:\Development\TEST\Prometric\Prometric\ConsoleApp1\bin\Debug\net5.0\Autofac.Extras.Attributed.dll
+D:\Development\TEST\Prometric\Prometric\ConsoleApp1\bin\Debug\net5.0\Autofac.Integration.Mef.dll

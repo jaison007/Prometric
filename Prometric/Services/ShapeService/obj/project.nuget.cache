@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "GDjYpf717UDMU4Nx0WrwxQ53Ga9Ilb/ig0bV/fiwU8zZL4nqOz/5epII1j0jN0LW6reIM+a0X8SPHctTI8yKJA==",
+  "success": true,
+  "projectFilePath": "D:\\Development\\TEST\\Prometric\\Prometric\\Services\\ShapeService\\ShapeService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jaiso\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

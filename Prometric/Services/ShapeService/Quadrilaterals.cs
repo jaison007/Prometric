@@ -1,13 +1,12 @@
 ﻿using Models.Base;
 
-namespace Models.Model
+namespace ShapeService
 {
     // 
     public class Quadrilaterals : Shape 
     {
-        public double Width { get; set; }
-        public double Length { get; set; }
-        //public string Name { get => ""; set => throw new NotImplementedException(); }
+        public override double Width { get; set; }
+        public override double Length { get; set; } 
  
         public Quadrilaterals()
         {

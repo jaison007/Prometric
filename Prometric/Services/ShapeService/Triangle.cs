@@ -1,13 +1,13 @@
 ﻿using Models.Base;
 using System;
 
-namespace Models.Model
+namespace ShapeService
 {
     public class Triangle : Shape 
     { 
-        public double Base { get; set; }
-        public double Height { get; set; } // Side1
-        public double Side2{ get; set; }
+        public override double Base { get; set; }
+        public override double Height { get; set; } // Side1
+        public override double Side2{ get; set; } 
 
         //public static int Count = 0;
         public Triangle()  

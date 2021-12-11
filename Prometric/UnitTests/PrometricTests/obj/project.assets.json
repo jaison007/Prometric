@@ -2,6 +2,43 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Autofac/6.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "4.7.1"
+        },
+        "compile": {
+          "lib/net5.0/Autofac.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Autofac.dll": {}
+        }
+      },
+      "Autofac.Extras.Attributed/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "[3.4.0, 4.0.0)",
+          "Autofac.Mef": "[3.0.3, 4.0.0)"
+        },
+        "compile": {
+          "lib/net40/Autofac.Extras.Attributed.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Autofac.Extras.Attributed.dll": {}
+        }
+      },
+      "Autofac.Mef/3.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "[3.3.1, 4.0.0)"
+        },
+        "compile": {
+          "lib/net40/Autofac.Integration.Mef.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Autofac.Integration.Mef.dll": {}
+        }
+      },
       "Castle.Core/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -801,17 +838,10 @@
           "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.3.0": {
+      "System.Diagnostics.DiagnosticSource/4.7.1": {
         "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
@@ -1947,8 +1977,11 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Autofac": "6.3.0",
+          "Autofac.Extras.Attributed": "3.3.0",
           "Models": "1.0.0",
           "Newtonsoft.Json": "13.0.1",
+          "ShapeService": "1.0.0",
           "System.Configuration.ConfigurationManager": "6.0.0"
         },
         "compile": {
@@ -1970,10 +2003,70 @@
         "runtime": {
           "bin/placeholder/Models.dll": {}
         }
+      },
+      "ShapeService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ShapeService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShapeService.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Autofac/6.3.0": {
+      "sha512": "gO4bli0N8tDnBHzbYktcnbXlmN6T+IT5W+FUGgCUaM6pwwHXIxOPoUGvfGum7sZpJJgfQNgjFFv80ZPuARgRdA==",
+      "type": "package",
+      "path": "autofac/6.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.6.3.0.nupkg.sha512",
+        "autofac.nuspec",
+        "icon.png",
+        "lib/net5.0/Autofac.dll",
+        "lib/net5.0/Autofac.pdb",
+        "lib/net5.0/Autofac.xml",
+        "lib/netstandard2.0/Autofac.dll",
+        "lib/netstandard2.0/Autofac.pdb",
+        "lib/netstandard2.0/Autofac.xml",
+        "lib/netstandard2.1/Autofac.dll",
+        "lib/netstandard2.1/Autofac.pdb",
+        "lib/netstandard2.1/Autofac.xml"
+      ]
+    },
+    "Autofac.Extras.Attributed/3.3.0": {
+      "sha512": "wk40AHmXVHdN8L//tDn48l6ZYuFedaKBciaW+5QAimifEy9Y+qevDizTT8TqZXqw3bXj4NYfhquvyv+m8aABvw==",
+      "type": "package",
+      "path": "autofac.extras.attributed/3.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.extras.attributed.3.3.0.nupkg.sha512",
+        "autofac.extras.attributed.nuspec",
+        "lib/net40/Autofac.Extras.Attributed.dll",
+        "lib/net40/Autofac.Extras.Attributed.xml"
+      ]
+    },
+    "Autofac.Mef/3.0.3": {
+      "sha512": "n27ambqDJCyzjHmkD7sHXMyAfmFlvzCghyQM5fE2A4RxQ9c/F2TvpUzlC27hbQOoz8+yK9iY35ccXW/Xzal16A==",
+      "type": "package",
+      "path": "autofac.mef/3.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.mef.3.0.3.nupkg.sha512",
+        "autofac.mef.nuspec",
+        "lib/net40/Autofac.Integration.Mef.dll",
+        "lib/net40/Autofac.Integration.Mef.xml"
+      ]
+    },
     "Castle.Core/4.4.0": {
       "sha512": "b5rRL5zeaau1y/5hIbI+6mGw3cwun16YjkHZnV9RRT5UyUIFsgLmNXJ0YnIN9p8Hw7K7AbG1q1UclQVU3DinAQ==",
       "type": "package",
@@ -3434,15 +3527,18 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/4.3.0": {
-      "sha512": "tD6kosZnTAGdrEa0tZSuFyunMbt/5KYDnHdndJYGqZoNy00XVXyACd5d6KnE1YgYv3ne2CjtAfNXo/fwEhnKUA==",
+    "System.Diagnostics.DiagnosticSource/4.7.1": {
+      "sha512": "j81Lovt90PDAq8kLpaJfJKV/rWdWuEk6jfV+MBkee33vzYLEUsy4gXK8laa9V2nZlLM9VM9yA/OOQxxPEJKAMw==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/4.3.0",
+      "path": "system.diagnostics.diagnosticsource/4.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net45/System.Diagnostics.DiagnosticSource.xml",
         "lib/net46/System.Diagnostics.DiagnosticSource.dll",
         "lib/net46/System.Diagnostics.DiagnosticSource.xml",
         "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.dll",
@@ -3451,8 +3547,10 @@
         "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
-        "system.diagnostics.diagnosticsource.nuspec"
+        "system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Diagnostics.TextWriterTraceListener/4.3.0": {
@@ -6642,6 +6740,11 @@
       "type": "project",
       "path": "../../Models/Models/Models.csproj",
       "msbuildProject": "../../Models/Models/Models.csproj"
+    },
+    "ShapeService/1.0.0": {
+      "type": "project",
+      "path": "../../Services/ShapeService/ShapeService.csproj",
+      "msbuildProject": "../../Services/ShapeService/ShapeService.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6749,5 +6852,47 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Autofac.Extras.Attributed 3.3.0 requires Autofac (>= 3.4.0 && < 4.0.0) but version Autofac 6.3.0 was resolved.",
+      "libraryId": "Autofac",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Autofac.Mef 3.0.3 requires Autofac (>= 3.3.1 && < 4.0.0) but version Autofac 6.3.0 was resolved.",
+      "libraryId": "Autofac",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Autofac.Extras.Attributed 3.3.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Autofac.Extras.Attributed",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Autofac.Mef 3.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Autofac.Mef",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

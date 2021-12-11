@@ -1,12 +1,11 @@
 ﻿using Models.Base;
 using System;
 
-namespace Models.Model
+namespace ShapeService
 {
     public class Circle : Shape  
     {
-        public double Radius { get; set; }
-        //public string Name {  get => ""; set => throw new NotImplementedException(); }
+        public override double Radius { get; set; } 
  
         public Circle()
         {

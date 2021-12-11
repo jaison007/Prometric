@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Models.Base; 
+using Models.Base;
+using ShapeService;
 
 namespace Models.Model.Tests
 { 

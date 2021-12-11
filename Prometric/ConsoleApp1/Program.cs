@@ -4,76 +4,111 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Configuration;
-using Models.Model;
+using System.Configuration; 
 using Models.Base;
+//using System.ComponentModel;
+using Autofac;
+using ShapeService;
+using Autofac.Core;
+using Autofac.Extras.Attributed;
 
 namespace ConsoleApp1
 {
     class Program
     {
+        private static IContainer ContainerRoot()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<Application>();
+            builder.RegisterType<Circle>().As<IShape>().InstancePerLifetimeScope();
+           
+            return builder.Build(); 
+        }
+
         static void Main(string[] args)
         { 
             try
-            {
-                //Console.WriteLine("Hello World!");
-                Random random = new Random((int)DateTime.UtcNow.Ticks);
+            { 
+                Random random = new Random((int)DateTime.UtcNow.Ticks); 
+ 
+                var firstCircleArea = ContainerRoot().Resolve<Application>().GetCircleArea();
+                Console.WriteLine($"Circle Area is {firstCircleArea.ToString() }");
+                var firstCirclePerimeter = ContainerRoot().Resolve<Application>().GetCirclePerimeter();
+                Console.WriteLine($"Circle Perimeter is {firstCirclePerimeter.ToString() }");
 
-                double width, length, triangleBase, height, side1, radius;
+                var firstTriangleArea = ContainerRoot().Resolve<Application>().GetTriangleArea();
+                Console.WriteLine($"Triangle area is {firstTriangleArea.ToString() }");
+                var firstTrianglePerimeter = ContainerRoot().Resolve<Application>().GetTrianglePerimeter();
+                Console.WriteLine($"Triangle Perimeter is {firstTrianglePerimeter.ToString() }");
 
-                radius = 6;
-                width = length = 2;
-                triangleBase = height = side1 = 3;
+
+                var firstSquareArea = ContainerRoot().Resolve<Application>().GetQuadrilateralArea();
+                Console.WriteLine($"Square area is {firstSquareArea.ToString() }");
+                var firstSquarePerimeter = ContainerRoot().Resolve<Application>().GetQuadrilateralPerimeter();
+                Console.WriteLine($"Square Perimeter is {firstSquarePerimeter.ToString() }");
 
 
-                // Doing some basic validations 
-                // Circles
-                var firstCircle = new Circle(radius);
-                var firstCircleArea = firstCircle.Area(); // Check Radius * Radius * Math.PI-> (6 * 6 * Math.PI);
-                var firstCirclePerimeter = firstCircle.Perimeter(); // Check 2 * Math.PI * Radius-> Math.PI * 6
-
-                // Triangles
-                var firstTriangle = new Triangle(triangleBase, height, side1);
-                var firstTriangleArea = firstTriangle.Area(); // Check (Height * base) / 2 -> (3*3)2
-                var firstTrianglePerimeter = firstTriangle.Perimeter(); // Check Height + Base + Side1;->  3 + 3 + 3
-
-                // Square
-                var firstSquare = new Quadrilaterals(width, length);
-                var firstSquareArea = firstSquare.Area(); // Check Width * Length-> 2 * 2
-                var firstSquarePerimeter = firstSquare.Perimeter(); // Check (Width + Length) * 2 ->  ( 2 + 2) * 2
-
-                // Rectangle
-                var firstRectangle = new Quadrilaterals(width, length);
-                var firstRectangleArea = firstRectangle.Area(); // Check Width * Length-> 2 * 2
-                var firstRectanglePerimeter = firstRectangle.Perimeter(); // Check (Width + Length) * 2 ->  ( 2 + 2) * 2
-
+                var firstRectangleArea = ContainerRoot().Resolve<Application>().GetQuadrilateralArea();
+                Console.WriteLine($"Rectangle area is {firstRectangleArea.ToString() }"); 
+                var firstRectanglePerimeter = ContainerRoot().Resolve<Application>().GetQuadrilateralPerimeter();
+                Console.WriteLine($"Rectangle area is {firstRectanglePerimeter.ToString() }");
 
 
                 // to  track(in memory) the number of Shape objects created (per class)
+                Console.WriteLine("");
+                Console.WriteLine("-----------------------------------------------------");
                 Console.WriteLine($"Total number of Circle is {InstanceCounter<Circle>.Count }");
                 Console.WriteLine($"Total number of Triangle is {InstanceCounter<Triangle>.Count }");
                 Console.WriteLine($"Total number of Square/ Rectangle is {InstanceCounter<Quadrilaterals>.Count }"); 
-
-                var shapes = new List<Shape>{
-                        new Circle(10),
-                        new Circle(radius),
-                        new Circle(11),
-                        new Circle(3),
-                        new Triangle(triangleBase, height, side1),
-                            new Quadrilaterals(width, length),};
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("");
 
 
                 // to sort a collection of Shapes by Area or Perimeter.
+                var shapes = new List<Shape>{
+                        new Circle(10),
+                        new Circle(3),
+                        new Circle(11),
+                        new Circle(3),
+                        new Triangle(3, 4, 5),
+                            new Quadrilaterals(5, 5),}; 
+
                 var shapesByArea = ShapesByArea(shapes);
+                Console.WriteLine("");
+                Console.WriteLine("--------------------- Shapes by Area in descending order --------------------------------");
+                foreach (var shape in shapesByArea)
+                {
+                    Console.WriteLine($"Area of {shape.GetType().Name} is {shape.Area() }");
+                }
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("");
+
                 var shapesByPerimeter = ShapesByPerimeter(shapes);
+                Console.WriteLine("");
+                Console.WriteLine("--------------------- Shapes by Perimeter in descending order --------------------------------");
+                foreach (var shape in shapesByPerimeter)
+                {
+                    Console.WriteLine($"Perimeter of {shape.GetType().Name} is {shape.Perimeter() }");
+                }
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("");
+
 
                 // to serialize/store shapes in various formats on disk.
+                Console.WriteLine("");
+                Console.WriteLine("--------------------- Serialize Shapes in JSON format and save into disk --------------------------------");
                 SerializeShapes(shapes);
+                Console.WriteLine("----------------- File has been created Successfully. ------------------------------------");
+                Console.WriteLine("");
 
                 // to  track(in memory) the number of Shape objects created (per class)
+                Console.WriteLine("");
+                Console.WriteLine("--------------------- Track number of objects created --------------------------------");
                 Console.WriteLine($"Total number of Circle is {InstanceCounter<Circle>.Count }");
                 Console.WriteLine($"Total number of Triangle is {InstanceCounter<Triangle>.Count }");
                 Console.WriteLine($"Total number of Square/ Rectangle is {InstanceCounter<Quadrilaterals>.Count }");
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("");
             }
             catch(Exception e)
             {
@@ -129,7 +164,7 @@ namespace ConsoleApp1
                 filePath = string.IsNullOrEmpty(filePath) ? @"D:\TestFolder\Shapes.txt" : filePath;
 
 
-                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
+                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite, Formatting.Indented);
                 writer = new StreamWriter(filePath, append);
                 writer.Write(contentsToWriteToFile);
 
