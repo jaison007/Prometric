@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "j9O1jDq6d45RcBCtKCQj0/20IDjLN5OTY+EIApRistiNWKFMBRPnez7zOu37bd0OVDQzN8P/+x41NVPH84FJLg==",
+  "success": true,
+  "projectFilePath": "D:\\Development\\TEST\\Prometric\\Prometric\\Models\\Models\\Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jaiso\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
