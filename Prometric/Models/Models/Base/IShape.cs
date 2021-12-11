@@ -18,5 +18,8 @@ namespace Models.Base
 
         abstract double Perimeter();
         abstract double Area();
+        
+        // To validate different input parameters
+        abstract bool ValidateInputs(double value);
     }
 }

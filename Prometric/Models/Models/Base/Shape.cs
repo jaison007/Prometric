@@ -18,6 +18,15 @@ namespace Models.Base
 
         public abstract double Perimeter();
         public abstract double Area();
+
+        public bool ValidateInputs(double value)
+        {
+            if (Math.Abs(value) <= Double.Epsilon)
+                return false; 
+            else
+                return true;
+
+        } 
     }
 
 }

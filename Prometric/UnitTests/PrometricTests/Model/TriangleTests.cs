@@ -16,8 +16,8 @@ namespace Models.Model.Tests
         private Shape shapeObj = null;
 
 
-        [TestMethod("Triangle Triangle Test")]
-        public void TriangleTest()
+        [TestMethod("Triangle Area Test")]
+        public void TriangleAreaTest()
         {
             //arrange
             double @base, height, side;
@@ -32,7 +32,7 @@ namespace Models.Model.Tests
         }
 
         [TestMethod("Triangle Perimeter Test")]
-        public void PerimeterTest()
+        public void TrianglePerimeterTest()
         {
             //arrange
             double @base, height, side;
@@ -44,6 +44,20 @@ namespace Models.Model.Tests
 
             //Assert
             Xunit.Assert.Equal(expectedPerimeter, shapeObj.Perimeter());
+        }
+
+        [TestMethod("Triangle Name Test")]
+        public void TriangleNameTest()
+        {
+            double @base, height, side;
+            @base = height = side = 10;
+            string expectedName = "equilateral";
+
+            //act
+            var shapeObj = new Triangle(@base, height, side);
+
+            //Assert
+            Xunit.Assert.Equal(expectedName, shapeObj.Name);
         }
     }
 }

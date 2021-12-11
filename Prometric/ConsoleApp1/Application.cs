@@ -56,6 +56,12 @@ namespace ConsoleApp1
             return this.Shape.Perimeter();
         }
 
+        // To get Triangle Name
+        public string GetTriangleName()
+        {
+            this.Shape = new Triangle(5, 5, 5);
+            return this.Shape.Name;
+        }
 
         /// <summary>
         /// To get Quadrilateral aRea
@@ -76,6 +82,13 @@ namespace ConsoleApp1
         {
             this.Shape = new Quadrilaterals(5, 5);
             return this.Shape.Perimeter();
+        }
+
+        // To get Quadrilateral Name
+        public string GetQuadrilateralName()
+        {
+            this.Shape = new Quadrilaterals(5, 5);
+            return this.Shape.Name;
         }
     }
 }

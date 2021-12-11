@@ -26,23 +26,36 @@ namespace ShapeService
         public override double Area()
         {
             //Area of Square/Rectangle = width*length
-            return Width * Length;
+            if (ValidateInputs(Width) && ValidateInputs(Length))
+                return Width * Length;
+
+            else
+                return 0.0; 
         }
 
         public override double Perimeter()
         {
             //Perimeter of Square/Rectangle = (width + length) * 2
-            return (Width + Length) * 2;
+            if (ValidateInputs(Width) && ValidateInputs(Length))
+                return (Width + Length) * 2;
+
+            else
+                return 0.0; 
         }
         public override string Name
         {
             get
             {
                 // The name should take into account if all sides are the same length.
-                if (Width.Equals(Length))
-                    return "Square";
-                else  
-                    return "Rectangle"; 
+                if (ValidateInputs(Width) && ValidateInputs(Length))
+                {
+                    if (Width.Equals(Length))
+                        return "Square";
+                    else
+                        return "Rectangle";
+                }
+                else
+                    return "Unknown";
             } 
         }
     }

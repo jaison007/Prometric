@@ -40,7 +40,7 @@ namespace Models.Model.Tests
         }
 
         [TestMethod("Check Name - Square")]
-        public void squareNameTest()
+        public void SquareNameTest()
         {
             //arrange
             double width, length;

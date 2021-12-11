@@ -29,32 +29,36 @@ namespace ConsoleApp1
         { 
             try
             { 
-                Random random = new Random((int)DateTime.UtcNow.Ticks); 
- 
-                var firstCircleArea = ContainerRoot().Resolve<Application>().GetCircleArea();
+                Random random = new Random((int)DateTime.UtcNow.Ticks);
+
+                var circle = ContainerRoot().Resolve<Application>();
+                var firstCircleArea = circle.GetCircleArea();
                 Console.WriteLine($"Circle Area is {firstCircleArea.ToString() }");
-                var firstCirclePerimeter = ContainerRoot().Resolve<Application>().GetCirclePerimeter();
+                var firstCirclePerimeter = circle.GetCirclePerimeter();
                 Console.WriteLine($"Circle Perimeter is {firstCirclePerimeter.ToString() }");
 
-                var firstTriangleArea = ContainerRoot().Resolve<Application>().GetTriangleArea();
+                var triangle = ContainerRoot().Resolve<Application>(); 
+                var firstTriangleArea = triangle.GetTriangleArea();
                 Console.WriteLine($"Triangle area is {firstTriangleArea.ToString() }");
-                var firstTrianglePerimeter = ContainerRoot().Resolve<Application>().GetTrianglePerimeter();
-                Console.WriteLine($"Triangle Perimeter is {firstTrianglePerimeter.ToString() }");
+                var firstTrianglePerimeter = triangle.GetTrianglePerimeter();
+                Console.WriteLine($"Triangle Perimeter is {firstTrianglePerimeter.ToString() }");           
+                Console.WriteLine($"Triangle NAME is {triangle.GetTriangleName() }");
 
-
-                var firstSquareArea = ContainerRoot().Resolve<Application>().GetQuadrilateralArea();
+                var square = ContainerRoot().Resolve<Application>();
+                var firstSquareArea = square.GetQuadrilateralArea();
                 Console.WriteLine($"Square area is {firstSquareArea.ToString() }");
-                var firstSquarePerimeter = ContainerRoot().Resolve<Application>().GetQuadrilateralPerimeter();
+                var firstSquarePerimeter = square.GetQuadrilateralPerimeter();
                 Console.WriteLine($"Square Perimeter is {firstSquarePerimeter.ToString() }");
+                Console.WriteLine($"Triangle NAME is {square.GetQuadrilateralName() }");
 
-
-                var firstRectangleArea = ContainerRoot().Resolve<Application>().GetQuadrilateralArea();
+                var rectangle = ContainerRoot().Resolve<Application>();
+                var firstRectangleArea = rectangle.GetQuadrilateralArea();
                 Console.WriteLine($"Rectangle area is {firstRectangleArea.ToString() }"); 
-                var firstRectanglePerimeter = ContainerRoot().Resolve<Application>().GetQuadrilateralPerimeter();
+                var firstRectanglePerimeter = rectangle.GetQuadrilateralPerimeter();
                 Console.WriteLine($"Rectangle area is {firstRectanglePerimeter.ToString() }");
+                Console.WriteLine($"Triangle NAME is {rectangle.GetQuadrilateralName() }");
 
-
-                // to  track(in memory) the number of Shape objects created (per class)
+                // to  track(in memory) the number of Shape objects created 
                 Console.WriteLine("");
                 Console.WriteLine("-----------------------------------------------------");
                 Console.WriteLine($"Total number of Circle is {InstanceCounter<Circle>.Count }");
@@ -104,7 +108,7 @@ namespace ConsoleApp1
                     Console.WriteLine("----------------- Unexpected ERROR while saving to disk. ------------------------------------");
                 Console.WriteLine("");
 
-                // to  track(in memory) the number of Shape objects created (per class)
+                // to  track(in memory) the number of Shape objects created 
                 Console.WriteLine("");
                 Console.WriteLine("--------------------- Track number of objects created --------------------------------");
                 Console.WriteLine($"Total number of Circle is {InstanceCounter<Circle>.Count }");
