@@ -127,3 +127,5 @@ D:\Development\TEST\Prometric\Prometric\UnitTests\PrometricTests\obj\Debug\net5.
 D:\Development\TEST\Prometric\Prometric\UnitTests\PrometricTests\bin\Debug\net5.0\Autofac.dll
 D:\Development\TEST\Prometric\Prometric\UnitTests\PrometricTests\bin\Debug\net5.0\ShapeService.dll
 D:\Development\TEST\Prometric\Prometric\UnitTests\PrometricTests\bin\Debug\net5.0\ShapeService.pdb
+D:\Development\TEST\Prometric\Prometric\UnitTests\PrometricTests\bin\Debug\net5.0\Autofac.Extras.Attributed.dll
+D:\Development\TEST\Prometric\Prometric\UnitTests\PrometricTests\bin\Debug\net5.0\Autofac.Integration.Mef.dll

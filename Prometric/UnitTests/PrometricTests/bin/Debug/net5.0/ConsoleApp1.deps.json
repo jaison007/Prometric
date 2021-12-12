@@ -9,6 +9,7 @@
       "ConsoleApp1/1.0.0": {
         "dependencies": {
           "Autofac": "6.3.0",
+          "Autofac.Extras.Attributed": "3.3.0",
           "Models": "1.0.0",
           "Newtonsoft.Json": "13.0.1",
           "ShapeService": "1.0.0",
@@ -26,6 +27,29 @@
           "lib/net5.0/Autofac.dll": {
             "assemblyVersion": "6.3.0.0",
             "fileVersion": "6.3.0.0"
+          }
+        }
+      },
+      "Autofac.Extras.Attributed/3.3.0": {
+        "dependencies": {
+          "Autofac": "6.3.0",
+          "Autofac.Mef": "3.0.3"
+        },
+        "runtime": {
+          "lib/net40/Autofac.Extras.Attributed.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.0.213"
+          }
+        }
+      },
+      "Autofac.Mef/3.0.3": {
+        "dependencies": {
+          "Autofac": "6.3.0"
+        },
+        "runtime": {
+          "lib/net40/Autofac.Integration.Mef.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.3.0"
           }
         }
       },
@@ -192,6 +216,20 @@
       "sha512": "sha512-gO4bli0N8tDnBHzbYktcnbXlmN6T+IT5W+FUGgCUaM6pwwHXIxOPoUGvfGum7sZpJJgfQNgjFFv80ZPuARgRdA==",
       "path": "autofac/6.3.0",
       "hashPath": "autofac.6.3.0.nupkg.sha512"
+    },
+    "Autofac.Extras.Attributed/3.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wk40AHmXVHdN8L//tDn48l6ZYuFedaKBciaW+5QAimifEy9Y+qevDizTT8TqZXqw3bXj4NYfhquvyv+m8aABvw==",
+      "path": "autofac.extras.attributed/3.3.0",
+      "hashPath": "autofac.extras.attributed.3.3.0.nupkg.sha512"
+    },
+    "Autofac.Mef/3.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n27ambqDJCyzjHmkD7sHXMyAfmFlvzCghyQM5fE2A4RxQ9c/F2TvpUzlC27hbQOoz8+yK9iY35ccXW/Xzal16A==",
+      "path": "autofac.mef/3.0.3",
+      "hashPath": "autofac.mef.3.0.3.nupkg.sha512"
     },
     "Microsoft.Win32.SystemEvents/6.0.0": {
       "type": "package",
