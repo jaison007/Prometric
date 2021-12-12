@@ -30,35 +30,59 @@ namespace ShapeService
             get
             {
                 // if it is equilateral (all 3 sides are the same length), isosceles (only 2 sides are the same length) or scalene (no 2 sides are the same).
-                if (ValidateInputs(Height) && ValidateInputs(Base) && ValidateInputs(Side2))
+                try
                 {
-                    if (Height.Equals(Base) && Height.Equals(Side2))
-                        return "equilateral";
-                    else if (Height.Equals(Base) || Side2.Equals(Base) || Height.Equals(Side2))
-                        return "isosceles";
+                    if (ValidateInputs(Height) && ValidateInputs(Base) && ValidateInputs(Side2))
+                    {
+                        if (Height.Equals(Base) && Height.Equals(Side2))
+                            return "equilateral";
+                        else if (Height.Equals(Base) || Side2.Equals(Base) || Height.Equals(Side2))
+                            return "isosceles";
+                        else
+                            return "scalene";
+                    }
                     else
-                        return "scalene";
+                        return "Unknown";
                 }
-                else
-                    return "Unknown";
+                catch
+                {
+
+                }
+                return "Unknown";
             } 
         }
         public override double Area()
         {
             // Area of triangle = (Height * base) / 2
-            if (ValidateInputs(Height) && ValidateInputs(Base) && ValidateInputs(Side2))
-                return (Height * Base) / 2;
-            else
-                return 0.0;
+            try
+            {
+                if (ValidateInputs(Height) && ValidateInputs(Base) && ValidateInputs(Side2))
+                    return (Height * Base) / 2;
+                else
+                    return 0.0;
+            }
+            catch
+            {
+
+            }
+            return 0.0;
         }
 
         public override double Perimeter()
         {
             //Perimeter of triangle = a + b +c
-            if (ValidateInputs(Height) && ValidateInputs(Base) && ValidateInputs(Side2))
-                return Height + Base + Side2;
-            else
-                return 0.0;
+            try
+            {
+                if (ValidateInputs(Height) && ValidateInputs(Base) && ValidateInputs(Side2))
+                    return Height + Base + Side2;
+                else
+                    return 0.0;
+            }
+            catch
+            {
+
+            }
+            return 0.0;
         }
     }
 }

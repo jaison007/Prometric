@@ -26,21 +26,37 @@ namespace ShapeService
         public override double Area()
         {
             //Area of circle = Pi*R*R  where R=Radius ,Pi=3.14
-            if (ValidateInputs(Radius))
-                return Radius * Radius * Math.PI;
+            try
+            {
+                if (ValidateInputs(Radius))
+                    return Radius * Radius * Math.PI;
 
-            else
-                return 0.0;
+                else
+                    return 0.0;
+            }
+            catch
+            {
+
+            }
+            return 0.0;
         }
 
         public override double Perimeter()
         {
             //Perimeter (circumference) of circle = 2*Pi*R where R=Radius ,Pi=3.14 
-            if (ValidateInputs(Radius))
-                return 2 * Math.PI * Radius;
+            try
+            {
+                if (ValidateInputs(Radius))
+                    return 2 * Math.PI * Radius;
 
-            else
-                return 0.0;
+                else
+                    return 0.0;
+            }
+            catch
+            {
+
+            }
+            return 0.0;
         }
     }
 

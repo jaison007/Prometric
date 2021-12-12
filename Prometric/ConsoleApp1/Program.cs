@@ -20,7 +20,7 @@ namespace ConsoleApp1
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<Application>();
-            builder.RegisterType<Circle>().As<IShape>().InstancePerLifetimeScope();
+            builder.RegisterType<ShapeService.ShapeService>().As<IShapeService>().InstancePerLifetimeScope();
            
             return builder.Build(); 
         }
@@ -31,32 +31,51 @@ namespace ConsoleApp1
             { 
                 Random random = new Random((int)DateTime.UtcNow.Ticks);
 
-                var circle = ContainerRoot().Resolve<Application>();
-                var firstCircleArea = circle.GetCircleArea();
+                var service = ContainerRoot().Resolve<Application>();
+
+
+                Console.WriteLine("Enter Circle Radius:");
+                var radius = Convert.ToDouble(Console.ReadLine()); 
+                
+                var firstCircleArea = service.GetCircleArea(radius);
                 Console.WriteLine($"Circle Area is {firstCircleArea.ToString() }");
-                var firstCirclePerimeter = circle.GetCirclePerimeter();
+                var firstCirclePerimeter = service.GetCirclePerimeter(radius);
                 Console.WriteLine($"Circle Perimeter is {firstCirclePerimeter.ToString() }");
 
-                var triangle = ContainerRoot().Resolve<Application>(); 
-                var firstTriangleArea = triangle.GetTriangleArea();
+                Console.WriteLine("Enter Triangle Base:");
+                var @base = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter Triangle Height:");
+                var height = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter Triangle Side:");
+                var side = Convert.ToDouble(Console.ReadLine());
+
+                var firstTriangleArea = service.GetTriangleArea(@base, height, side);
                 Console.WriteLine($"Triangle area is {firstTriangleArea.ToString() }");
-                var firstTrianglePerimeter = triangle.GetTrianglePerimeter();
+                var firstTrianglePerimeter = service.GetTrianglePerimeter(@base, height, side);
                 Console.WriteLine($"Triangle Perimeter is {firstTrianglePerimeter.ToString() }");           
-                Console.WriteLine($"Triangle NAME is {triangle.GetTriangleName() }");
+                Console.WriteLine($"Triangle NAME is {service.GetTriangleName(@base, height, side) }");
 
-                var square = ContainerRoot().Resolve<Application>();
-                var firstSquareArea = square.GetQuadrilateralArea();
+                Console.WriteLine("Enter Square Width:");
+                var width = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter Square Height:");
+                var length = Convert.ToDouble(Console.ReadLine()); 
+
+                var firstSquareArea = service.GetQuadrilateralArea(width, length);
                 Console.WriteLine($"Square area is {firstSquareArea.ToString() }");
-                var firstSquarePerimeter = square.GetQuadrilateralPerimeter();
+                var firstSquarePerimeter = service.GetQuadrilateralPerimeter(width, length);
                 Console.WriteLine($"Square Perimeter is {firstSquarePerimeter.ToString() }");
-                Console.WriteLine($"Triangle NAME is {square.GetQuadrilateralName() }");
+                Console.WriteLine($"Square NAME is {service.GetQuadrilateralName(width, length) }");
 
-                var rectangle = ContainerRoot().Resolve<Application>();
-                var firstRectangleArea = rectangle.GetQuadrilateralArea();
+                Console.WriteLine("Enter Rectangle Width:");
+                width = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter Rectangle Height:");
+                length = Convert.ToDouble(Console.ReadLine());
+
+                var firstRectangleArea = service.GetQuadrilateralArea(width, length);
                 Console.WriteLine($"Rectangle area is {firstRectangleArea.ToString() }"); 
-                var firstRectanglePerimeter = rectangle.GetQuadrilateralPerimeter();
+                var firstRectanglePerimeter = service.GetQuadrilateralPerimeter(width, length);
                 Console.WriteLine($"Rectangle area is {firstRectanglePerimeter.ToString() }");
-                Console.WriteLine($"Triangle NAME is {rectangle.GetQuadrilateralName() }");
+                Console.WriteLine($"Rectangle NAME is {service.GetQuadrilateralName(width, length) }");
 
                 // to  track(in memory) the number of Shape objects created 
                 Console.WriteLine("");

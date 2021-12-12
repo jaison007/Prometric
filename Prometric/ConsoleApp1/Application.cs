@@ -11,66 +11,60 @@ namespace ConsoleApp1
 {
     public class Application
     {
-        protected IShape Shape { get; set; }
+        protected IShapeService ShapeService { get; set; }
 
         protected double width, length, triangleBase, height, side1, radius;
 
-        public Application(IShape shape)
+        public Application(IShapeService shapeService)
         {
-            Shape = shape ?? throw new ArgumentNullException("Shape is null"); //Injected  
+            ShapeService = shapeService ?? throw new ArgumentNullException("service  is null"); //Injected  
         }
 
         /// <summary>
         /// To get Circle area
         /// </summary>
         /// <returns></returns>
-        public double GetCircleArea()
-        { 
-            Shape.Radius = 5; 
-            return Shape.Area();
+        public double GetCircleArea(double radius)
+        {
+            return ShapeService.GetCircleArea(radius);
         }
         /// <summary>
         /// To get Circle Perimeter
         /// </summary>
         /// <returns></returns>
-        public double GetCirclePerimeter()
+        public double GetCirclePerimeter(double radius)
         {
-            Shape.Radius = 5; 
-            return Shape.Perimeter();
+            return ShapeService.GetCirclePerimeter(radius); 
         }
 
         /// <summary>
         /// To get Triangle Area
         /// </summary>
         /// <returns></returns>
-        public double GetTriangleArea()
+        public double GetTriangleArea(double @base, double height, double side)
         {
-            this.Shape = new Triangle(5, 5, 5);  
-            return this.Shape.Area();
+            return ShapeService.GetTriangleArea(@base, height, side);
         }
 
         // To get Triangle Perimeter
-        public double GetTrianglePerimeter()
+        public double GetTrianglePerimeter(double @base, double height, double side)
         {
-            this.Shape = new Triangle(5, 5, 5); 
-            return this.Shape.Perimeter();
+            return ShapeService.GetTrianglePerimeter(@base, height, side);
         }
 
         // To get Triangle Name
-        public string GetTriangleName()
+        public string GetTriangleName(double @base, double height, double side)
         {
-            this.Shape = new Triangle(5, 5, 5);
-            return this.Shape.Name;
+            return ShapeService.GetTriangleName(@base, height, side);
         }
 
         /// <summary>
         /// To get Quadrilateral aRea
         /// </summary>
         /// <returns></returns>
-        public double GetQuadrilateralArea()
+        public double GetQuadrilateralArea(double width, double length)
         {
-            this.Shape = new Quadrilaterals(5, 5); 
-            return this.Shape.Area();
+            return ShapeService.GetQuadrilateralArea(width, length);
         }
 
 
@@ -78,17 +72,15 @@ namespace ConsoleApp1
         /// To get Quadrilateral Perimeter
         /// </summary>
         /// <returns></returns>
-        public double GetQuadrilateralPerimeter()
+        public double GetQuadrilateralPerimeter(double @width, double length)
         {
-            this.Shape = new Quadrilaterals(5, 5);
-            return this.Shape.Perimeter();
+            return ShapeService.GetQuadrilateralPerimeter(width, length);
         }
 
         // To get Quadrilateral Name
-        public string GetQuadrilateralName()
+        public string GetQuadrilateralName(double @width, double length)
         {
-            this.Shape = new Quadrilaterals(5, 5);
-            return this.Shape.Name;
+            return ShapeService.GetQuadrilateralName(width, length);
         }
     }
 }

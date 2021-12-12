@@ -26,36 +26,60 @@ namespace ShapeService
         public override double Area()
         {
             //Area of Square/Rectangle = width*length
-            if (ValidateInputs(Width) && ValidateInputs(Length))
-                return Width * Length;
+            try
+            {
+                if (ValidateInputs(Width) && ValidateInputs(Length))
+                    return Width * Length;
 
-            else
-                return 0.0; 
+                else
+                    return 0.0;
+            }
+            catch
+            {
+
+            }
+            return 0.0;
         }
 
         public override double Perimeter()
         {
             //Perimeter of Square/Rectangle = (width + length) * 2
-            if (ValidateInputs(Width) && ValidateInputs(Length))
-                return (Width + Length) * 2;
+            try 
+            {
+                if (ValidateInputs(Width) && ValidateInputs(Length))
+                    return (Width + Length) * 2;
 
-            else
-                return 0.0; 
+                else
+                    return 0.0;
+            }
+            catch
+            {
+
+            }
+            return 0.0;
         }
         public override string Name
         {
             get
             {
                 // The name should take into account if all sides are the same length.
-                if (ValidateInputs(Width) && ValidateInputs(Length))
+                try
                 {
-                    if (Width.Equals(Length))
-                        return "Square";
+                    if (ValidateInputs(Width) && ValidateInputs(Length))
+                    {
+                        if (Width.Equals(Length))
+                            return "Square";
+                        else
+                            return "Rectangle";
+                    }
                     else
-                        return "Rectangle";
+                        return "Unknown"; 
                 }
-                else
-                    return "Unknown";
+                catch
+                {
+
+                }
+                return "Unknown";
             } 
         }
     }
