@@ -25,7 +25,7 @@ namespace Models.Model.Tests
         }
 
         [TestMethod("Square Perimeter Test")]
-        public void PerimeterTest()
+        public void AreaPerimeterTest()
         {
             //arrange
             double width, length;
@@ -53,6 +53,38 @@ namespace Models.Model.Tests
             //Assert
             Xunit.Assert.Equal(expectedPerimeter, shapeObj.Name);
         }
+
+
+        [TestMethod("Rectangle Area Test")]
+        public void RectangleAreaTest()
+        {
+            //arrange
+            double width, length;
+            width = 10;  length = 5;
+            double expectedArea = width * length;
+
+            //act
+            var shapeObj = new Quadrilaterals(width, length);
+
+            //Assert
+            Xunit.Assert.Equal(expectedArea, shapeObj.Area());
+        }
+
+        [TestMethod("Rectangle Perimeter Test")]
+        public void RectanglePerimeterTest()
+        {
+            //arrange
+            double width, length;
+            width = 10;  length = 5;
+            double expectedPerimeter = (width + length) * 2;
+
+            //act
+            var shapeObj = new Quadrilaterals(width, length);
+
+            //Assert
+            Xunit.Assert.Equal(expectedPerimeter, shapeObj.Perimeter());
+        }
+
 
         [TestMethod("Check Name - Rectangle")]
         public void RectangleNameTest()
